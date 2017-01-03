@@ -1,0 +1,5 @@
+ACTION!="add|change", GOTO="usbend"
+
+SUBSYSTEMS=="usb", SUBSYSTEM=="block", NAME="usb_persistent"
+KERNELS=="usb_persistent", NAME="usb_persistent1"
+LABEL="usbend"

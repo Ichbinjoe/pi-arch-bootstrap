@@ -1,0 +1,11 @@
+allow booting;
+allow bootp;
+
+DEFAULT menu.c32
+PROMPT 1
+
+MENU TITLE ibj.io PXE Boot
+MENU INCLUDE pxelinux.cfg/graphics.conf
+MENU AUTOBOOT Starting Boot in # seconds
+
+MENU INCLUDE pxelinux.cfg/common

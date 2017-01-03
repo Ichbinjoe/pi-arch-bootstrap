@@ -1,0 +1,2 @@
+TFTPD_ARGS="--secure /srv/tftp"
+

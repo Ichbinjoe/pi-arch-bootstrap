@@ -1,0 +1,7 @@
+#
+# /etc/fstab: static file system information
+#
+# <file system>	<dir>	<type>	<options>	<dump>	<pass>
+
+localhost:/data         /data       glusterfs   defaults,_netdev,log-level=WARNING,log-file=/var/log/gluster.log 0 0
+

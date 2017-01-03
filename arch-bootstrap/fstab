@@ -1,0 +1,10 @@
+#
+# /etc/fstab: static file system information
+#
+# <file system>	<dir>	<type>	<options>	<dump>	<pass>
+
+10.12.0.4:/srv/nfs/arch /os         nfs         rsize=8192,wsize=8192,timeo=14,intr 0 0
+
+tmpfs                   /tmproot    tmpfs       rw,size=2G,noexec,nodev,nosuid,uid=648,gid=648,mode=1700 0 0
+
+overlay                 /           overlay     noauto,x-systemd.automount,lowerdir=/os,upperdir=/tmproot 0 0

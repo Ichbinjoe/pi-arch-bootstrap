@@ -1,0 +1,4 @@
+LABEL spinrite
+    MENU LABEL SpinRite Drive Diagnostics
+    kernel memdisk
+    append initrd=spinrite.iso

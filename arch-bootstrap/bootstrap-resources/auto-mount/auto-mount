@@ -1,0 +1,16 @@
+#!/bin/bash
+
+build() {
+    add_binary "/usr/bin/parted"
+    add_runscript
+}
+
+help() {
+  cat <<HELPEOF
+This hook takes all drives, sd[abcdef] and tries to figure if a partition
+is present on them. If a partition is not present, then this will partition it.
+HELPEOF
+}
+
+
+# vim: set ft=sh ts=4 sw=4 et:

@@ -1,0 +1,22 @@
+allow booting;
+allow bootp;
+
+DEFAULT menu.c32
+PROMPT 0
+
+MENU TITLE PXE Special Boot Menu
+MENU INCLUDE pxelinux.cfg/graphics.conf
+MENU AUTOBOOT Starting PXE Boot in # seconds
+
+LABEL Boot
+    MENU LABEL ^Boot through network PXE boot
+    MENU DEFAULT
+    KERNEL arch-server/vmlinuz-linux
+    INITRD arch-server/initrd
+    APPEND root=/dev/nfs rootfstype=nfs ip=::::::dhcp nfsroot=10.12.0.4:/srv/nfs/arch-server
+
+MENU INCLUE pxelinux.cfg/common
+
+TIMEOUT 5
+
+

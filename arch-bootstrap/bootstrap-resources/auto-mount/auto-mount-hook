@@ -1,0 +1,26 @@
+#!/usr/bin/ash
+
+run_earlyhook() {
+
+    echo "" >> /etc/fstab
+    echo "# ALL ENTRIES BELOW ARE GENREATED BY THE AUTO-MOUNT INITCPIO HOOK!" >> /etc/fstab
+    echo "" >> /etc/fstab
+    for i in a b c d e f; do
+        if [ ! -f "/dev/sd$i" ]; then
+            continue
+        fi
+        if [ ! -f "/dev/sd${i}1" ]; then
+            echo ":: Partitioning device /dev/sd${i}..."
+            parted -s -a optimal "/dev/sd${i}" mklabel msdos mkpart primary "0%" "100%"
+            mkfs.xfs -i size=512 "/dev/sd${i}1"
+        fi
+        echo ":: Adding /dev/sd${i}1 to boot list..."
+        mkdir -p "/blocks/${i}"
+        echo "/dev/sd${i}1 /blocks/${i} xfs defaults 0 0" >> /etc/fstab
+    done
+    echo "" >> /etc/fstab
+    echo "# AUTO-MOUNT FINISHED" >> /etc/fstab
+    echo "" >> /etc/fstab
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
